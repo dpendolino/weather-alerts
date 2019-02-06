@@ -10,15 +10,15 @@ MAX_DAYS=13
 
 # https://unix.stackexchange.com/questions/13731/is-there-a-way-to-get-the-min-max-median-and-average-of-a-list-of-numbers-in
 AVG=$(for day in $(seq 1 $MAX_DAYS); do
-  echo $FORECAST_JSON | jq -r --arg day $day '.properties.periods[$day | tonumber].temperature'
+    echo $FORECAST_JSON | jq -r --arg day $day '.properties.periods[$day | tonumber].temperature'
 done | jq -s add/length)
 
 MIN=$(for day in $(seq 1 $MAX_DAYS); do
-  echo $FORECAST_JSON | jq -r --arg day $day '.properties.periods[$day | tonumber].temperature'
+    echo $FORECAST_JSON | jq -r --arg day $day '.properties.periods[$day | tonumber].temperature'
 done | jq -s min)
 
 MAX=$(for day in $(seq 1 $MAX_DAYS); do
-  echo $FORECAST_JSON | jq -r --arg day $day '.properties.periods[$day | tonumber].temperature'
+    echo $FORECAST_JSON | jq -r --arg day $day '.properties.periods[$day | tonumber].temperature'
 done | jq -s max)
 
 echo $MIN
